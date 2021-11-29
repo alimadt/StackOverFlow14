@@ -5,6 +5,7 @@ from django.db import models
 from django.utils.crypto import get_random_string
 from phonenumber_field.modelfields import PhoneNumberField
 
+
 class MyUserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -44,9 +45,7 @@ class MyUser(AbstractUser):
         return f'{self.username} {self.phone_number}'
 
     def create_activation_code(self):
-        code = get_random_string(length=6,
-                                 allowed_chars='1234567890')
-        print(code)
+        code = get_random_string(length=25, allowed_chars='abcdefghijklmnopqrstuwxyz1234567890')
         self.activation_code = code
 
 

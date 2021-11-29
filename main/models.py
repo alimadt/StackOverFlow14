@@ -14,11 +14,13 @@ class Problem(models.Model):
     def __str__(self):
         return self.title
 
+
 class CodeImage(models.Model):
     image = models.ImageField(upload_to='images')
     problem = models.ForeignKey(Problem,
                                 on_delete=models.CASCADE,
                                 related_name='images')
+
 
 class Reply(models.Model):
     problem = models.ForeignKey(Problem,
